@@ -1,0 +1,103 @@
+{include file="common/header"  title="新闻中心" keywords="智简魔方" description="智简魔方" /}
+{tagdata name="newsCate,newsList" /}
+    <!-- Home Start -->
+  <br/>  <section class="bg-half-170 d-table w-100 bg-light" style="background: url('{$setting.web_view}/images/bg/page.png') top center;"
+        id="home">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="title-heading text-center text-md-left">
+                        <h3>新闻中心</h3>
+                        <p class="text-muted para-desc mt-3 mb-0">及时掌握我们的最新消息</p>
+                        <nav aria-label="breadcrumb" class="d-inline-block mt-4">
+                            <ul class="breadcrumb mb-0">
+                                <li class="breadcrumb-item"><a href="/index.html">首页</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">新闻中心</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </section>
+    <!--end section-->
+    <div class="position-relative">
+        <div class="shape overflow-hidden text-white">
+            <svg viewBox="0 0 1000 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0 0 c 0 0 200 50 500 50 s 500 -50 500 -50 v 101 h -1000 v -100 z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </div>
+    <!-- Home End -->
+
+    <!-- Blog Start -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-12">
+                    <div class="row newsList">
+                        <!-- <li class="list-inline-item"><a href="javascript:void(0)"
+                            class="like text-dark"><i data-feather="heart"
+                                class="fea icon-sm"></i> </a></li> -->
+						{foreach $newsList.list as $key=>$vo } 
+						<div class="col-lg-6 col-12 mb-4 pb-2">                  
+                          <div class="card blog-post border-0 shadow rounded overflow-hidden">                      
+                                               
+                            <div class="card-body p-4 content">                          
+                              <h5><a href="/newscontent/{$vo.id}.html" class="title text-dark">{$vo.title}</a></h5>                          
+                              <p class="text-muted mb-3 description">{$vo.description}</p>                          
+                              <ul  class="list-unstyled post-meta d-flex justify-content-between mb-0 pt-3 border-top">                              
+                                <li>                                  
+                                  <ul class="list-unstyled mb-0">                                                                            
+                                    <li class="list-inline-item ml-2"><a href="/newscontent/{$vo.id}.html"   class="comment text-dark"><i data-feather="message-circle"  class="fea icon-sm"></i>{$vo.read}</a></li>                                  
+                                  </ul>                              
+                                </li>                              
+                                <li><a href="/newscontent/{$vo.id}.html" class="read-more text-dark">阅读更多 <i   class="mdi mdi-arrow-right"></i></a></li>                          
+                              </ul>                      
+                            </div>
+							
+                          </div>     
+						  
+                        </div> 
+						{/foreach}
+                        <div class="col-12">
+                            <ul class="pagination justify-content-center mb-0">
+							  {if $newsList.previous}
+                              <li class="page-item"><a class="page-link" href="/news/{$newsList.previous}.html"  aria-label="Previous">上一页</a></li>
+							  {/if}
+							  {for start="$newsList.start" end="$newsList.num"}
+                              <li class="page-item {if $i==$newsList.page}active{/if}"><a class="page-link" href="/news/{$i}.html">{$i}</a></li>
+							  {/for}
+							  {if $newsList.next}
+                              <li class="page-item"><a class="page-link" href="/news/{$newsList.next}.html"        aria-label="Next">下一页</a></li>
+							  {/if}
+                            </ul>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+               
+                        <!-- CATAGORIES -->
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </section>
+    <!--end section-->
+    <!-- Blog End -->
+
+    <!-- Footer Start -->
+    <div id="footer"></div>
+    <!--end footer-->
+
+
+
+
+{include file="common/footer"  /}
